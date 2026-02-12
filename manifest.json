@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Gemini Bookrize",
+  "version": "1.0",
+  "description": "Syncs Gemini tab title with conversation topic and adds a quick navigation sidebar.",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://gemini.google.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "styles.css"
+      ]
+    }
+  ],
+  "permissions": []
+}

@@ -1,0 +1,264 @@
+/* Main Sidebar Style */
+#gemini-bookrize-sidebar {
+  position: fixed;
+  top: 64px;
+  right: 0;
+  bottom: 0;
+  width: 280px;
+  background-color: #ffffff;
+  border-left: 1px solid #dadce0;
+  padding: 16px;
+  overflow-y: auto;
+  z-index: 999;
+  font-family: 'Google Sans', 'Noto Sans TC', sans-serif;
+  color: #202124;
+  transition: width 0.3s ease, padding 0.3s ease;
+}
+
+#gemini-bookrize-sidebar.collapsed {
+  width: 50px;
+  padding: 16px 8px;
+  background-color: #f8f9fa;
+}
+
+#gemini-bookrize-sidebar.collapsed #gemini-bookmarks-list-container,
+#gemini-bookrize-sidebar.collapsed span {
+  display: none;
+}
+
+#gemini-nav-toggle {
+  float: right;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #5f6368;
+}
+
+#gemini-collapsed-icon {
+  display: none;
+  font-size: 24px;
+  color: #5f6368;
+  cursor: pointer;
+  margin-top: 8px;
+  text-align: center;
+}
+
+#gemini-bookrize-sidebar.collapsed #gemini-collapsed-icon {
+  display: block;
+}
+
+/* Header */
+#gemini-bookrize-sidebar h3 {
+  margin: 0 0 16px 0;
+  font-size: 15px;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+}
+
+/* Bookmark List */
+.gemini-bookmarks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.gemini-bookmark-item {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  transition: transform 0.2s cubic-bezier(0.2, 0, 0.2, 1), box-shadow 0.2s, background-color 0.2s, border-color 0.2s;
+  user-select: none;
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.gemini-bookmark-item:hover {
+  background: #f1f3f4;
+  border-color: #dadce0;
+}
+
+.gemini-bookmark-item.dragging {
+  opacity: 0.1;
+  /* 拖拽時本體幾乎透明，讓鼠標下的虛影更清晰 */
+}
+
+.gemini-bookmark-item.drag-over {
+  border: 2px dashed #1a73e8;
+  background-color: rgba(26, 115, 232, 0.05);
+  transform: translateY(2px);
+}
+
+/* 模式 1: 導航 (左側圖標) */
+.bookmark-nav-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  margin-right: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  /* 預設為食指手勢 */
+}
+
+/* 模式 2: 修改名稱 (中央文字) */
+.bookmark-label {
+  flex: 1;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #3c4043;
+  word-break: break-all;
+  cursor: text;
+  /* I字型 */
+  padding: 2px 4px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.bookmark-label:hover {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.bookmark-label:focus {
+  outline: none;
+  background: white;
+  border-color: #1a73e8;
+}
+
+/* 模式 3: 拖拽 (右側手柄) */
+.bookmark-drag-handle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  margin-left: 4px;
+  color: #bdc1c6;
+  cursor: grab;
+  /* 打開手掌 */
+}
+
+.bookmark-drag-handle:active {
+  cursor: grabbing;
+  /* 握住手掌 */
+}
+
+.bookmark-actions {
+  display: flex;
+  gap: 2px;
+  margin-left: 4px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.gemini-bookmark-item:hover .bookmark-actions {
+  opacity: 1;
+}
+
+.bookmark-actions button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  font-size: 10px;
+}
+
+.bookmark-actions button:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* Floating Button */
+#gemini-selection-bookmark-btn {
+  position: fixed;
+  z-index: 10000;
+  background-color: #1a73e8;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3);
+  animation: gemini-fade-in 0.2s ease-out;
+}
+
+@keyframes gemini-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dark Mode Support */
+body[data-theme="dark"] #gemini-bookrize-sidebar,
+body.dark-theme #gemini-bookrize-sidebar {
+  background-color: #1e1f20;
+  color: #e8eaed;
+  border-left-color: #3c4043;
+}
+
+body[data-theme="dark"] #gemini-bookrize-sidebar.collapsed,
+body.dark-theme #gemini-bookrize-sidebar.collapsed {
+  background-color: #2d2e30;
+}
+
+body[data-theme="dark"] .gemini-bookmark-item,
+body.dark-theme .gemini-bookmark-item {
+  background-color: #2d2e30;
+  color: #e8eaed;
+}
+
+body[data-theme="dark"] .gemini-bookmark-item:hover,
+body.dark-theme .gemini-bookmark-item:hover {
+  background-color: #394457;
+}
+
+body[data-theme="dark"] .bookmark-label,
+body.dark-theme .bookmark-label {
+  color: #e8eaed;
+}
+
+body[data-theme="dark"] .bookmark-label:focus,
+body.dark-theme .bookmark-label:focus {
+  background: #1e1f20;
+  border-color: #8ab4f8;
+}
+
+body[data-theme="dark"] .bookmark-drag-handle,
+body.dark-theme .bookmark-drag-handle {
+  color: #5f6368;
+}
+
+body[data-theme="dark"] #gemini-selection-bookmark-btn,
+body.dark-theme #gemini-selection-bookmark-btn {
+  background-color: #8ab4f8;
+  color: #202124;
+}
+
+/* Scrollbar */
+#gemini-bookrize-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+#gemini-bookrize-sidebar::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+}
+
+body[data-theme="dark"] #gemini-bookrize-sidebar::-webkit-scrollbar-thumb,
+body.dark-theme #gemini-bookrize-sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+}
