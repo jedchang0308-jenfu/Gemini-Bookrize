@@ -11,21 +11,33 @@ This Chrome Extension adds two powerful features to the Google Gemini web interf
 1.  **Tab Title Sync**: Automatically updates your Chrome tab title to match the current conversation topic, making it easier to find the right tab when you have multiple open.
 2.  **Conversation Index Sidebar**: Adds a floating sidebar on the right side of the screen that lists your questions/prompts. Clicking on an item instantly scrolls the chat to that specific message.
 
-## How to Install
+## 🚀 快速安裝指引
 
-1.  **Download/Locate Folder**: Ensure you have the folder containing `manifest.json`, `content.js`, and `styles.css`.
-    *   Location: `c:\Users\user\Documents\OneDrive\桌面\Vibe_Coding_Test\Gemini Bookrize`
-2.  **Open Chrome Extensions**:
-    *   Open Google Chrome.
-    *   Navigate to `chrome://extensions/` in the address bar.
-3.  **Enable Developer Mode**:
-    *   Toggle the "Developer mode" switch in the top right corner of the Extensions page.
-4.  **Load Extension**:
-    *   Click the **"Load unpacked"** button (top left).
-    *   Select the folder `Gemini Bookrize` from your computer.
-5.  **Use It**:
-    *   Go to [gemini.google.com](https://gemini.google.com).
-    *   Open a chat. You should see the sidebar appear on the right, and the tab title should update.
+> [!IMPORTANT]
+> 本擴充功能專為 **[gemini.google.com](https://gemini.google.com)** 進行設計。請確保您在此網域下使用。
+
+### 🛠️ 手動安裝步驟
+
+**步驟一：開啟 Chrome 擴充功能設定**
+1. 打開您的 Google Chrome 瀏覽器。
+2. 在網址列輸入：`chrome://extensions/` 並按 Enter 鍵進入。
+
+**步驟二：開啟開發人員模式**
+1. 請看瀏覽器畫面的 **右上角**。
+2. 找到「**開發人員模式 (Developer mode)**」的開關，並點擊將其**打開**。
+
+**步驟三：載入擴充功能資料夾**
+1. 確定您可以看到包含 `manifest.json` 檔案的這個專案資料夾。
+2. 點擊畫面左上角的 **「載入未封裝項目 (Load unpacked)」** 按鈕。
+3. 選取本資料夾即可完成載入。
+
+> [!TIP]
+> 💡 **超快速秘訣**：當「開發人員模式」開啟後，您可以**直接將整個資料夾用滑鼠「拖放」**到 `chrome://extensions/` 畫面中央，立刻安裝完畢！
+
+**步驟四：完成安裝！**
+1. 前往 [Gemini 網頁介面](https://gemini.google.com/)。
+2. 重新整理頁面 (F5)。
+3. 當開啟對話後，您就可以看見自動化整理與右側的便利選單！
 
 ## Troubleshooting
 
