@@ -1,3 +1,9 @@
+# Jed 個人受控專案 (Jed's Managed Project)
+
+> [!IMPORTANT]
+> 本專案為 **Jed 個人受控專案**。
+> 所有開發行為皆遵循 `compliance_scope` 的個人專案白名單防護規範及相關技術選型準則。
+
 # Gemini Bookrize
 
 This Chrome Extension adds two powerful features to the Google Gemini web interface (`gemini.google.com`):

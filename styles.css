@@ -16,14 +16,35 @@
 }
 
 #gemini-bookrize-sidebar.collapsed {
-  width: 50px;
-  padding: 16px 8px;
+  width: 38px;
+  padding: 16px 4px;
   background-color: #f8f9fa;
+  overflow-x: hidden;
 }
 
 #gemini-bookrize-sidebar.collapsed #gemini-bookmarks-list-container,
-#gemini-bookrize-sidebar.collapsed span {
+#gemini-bookrize-sidebar.collapsed #gemini-export-container,
+#gemini-bookrize-sidebar.collapsed #gemini-search-container,
+#gemini-bookrize-sidebar.collapsed h3 {
   display: none;
+}
+
+#gemini-bookrize-sidebar.collapsed .gemini-tabs {
+  padding: 0 2px 16px 2px;
+}
+
+#gemini-bookrize-sidebar.collapsed .gemini-tab {
+  padding: 8px 2px;
+  word-break: break-word;
+  line-height: 1.2;
+  white-space: normal;
+}
+
+#gemini-bookrize-sidebar.collapsed #gemini-bookmark-count {
+  padding: 0 4px 6px 4px !important;
+  word-break: break-all;
+  white-space: normal;
+  text-align: center !important;
 }
 
 #gemini-nav-toggle {
@@ -94,6 +115,24 @@
   border: 2px dashed #1a73e8;
   background-color: rgba(26, 115, 232, 0.05);
   transform: translateY(2px);
+}
+
+/* 移到最新對話的固定項目 */
+.gemini-scroll-bottom-item {
+  border-left: 4px solid #34a853;
+  cursor: pointer;
+  background-color: rgba(52, 168, 83, 0.03);
+}
+
+.gemini-scroll-bottom-item .bookmark-label {
+  font-weight: 600;
+  color: #188038;
+}
+
+.gemini-scroll-bottom-item:hover {
+  background-color: rgba(52, 168, 83, 0.08) !important;
+  border-color: transparent;
+  border-left-color: #34a853;
 }
 
 /* 模式 1: 導航 (左側圖標) */
@@ -226,6 +265,22 @@ body.dark-theme .gemini-bookmark-item:hover {
   background-color: #394457;
 }
 
+body[data-theme="dark"] .gemini-scroll-bottom-item,
+body.dark-theme .gemini-scroll-bottom-item {
+  border-left-color: #81c995;
+  background-color: rgba(129, 201, 149, 0.08);
+}
+
+body[data-theme="dark"] .gemini-scroll-bottom-item .bookmark-label,
+body.dark-theme .gemini-scroll-bottom-item .bookmark-label {
+  color: #81c995;
+}
+
+body[data-theme="dark"] .gemini-scroll-bottom-item:hover,
+body.dark-theme .gemini-scroll-bottom-item:hover {
+  background-color: rgba(129, 201, 149, 0.15) !important;
+}
+
 body[data-theme="dark"] .bookmark-label,
 body.dark-theme .bookmark-label {
   color: #e8eaed;
@@ -246,6 +301,182 @@ body[data-theme="dark"] #gemini-selection-bookmark-btn,
 body.dark-theme #gemini-selection-bookmark-btn {
   background-color: #8ab4f8;
   color: #202124;
+}
+
+/* Action Buttons */
+.gemini-action-btn {
+  width: 100%;
+  padding: 10px;
+  background: linear-gradient(135deg, #1a73e8, #1557b0);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 2px 6px rgba(26, 115, 232, 0.2);
+}
+
+.gemini-action-btn:hover {
+  background: linear-gradient(135deg, #1e81ff, #1a73e8);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(26, 115, 232, 0.4);
+}
+
+.gemini-action-btn:active {
+  transform: translateY(0);
+}
+
+/* Search Box */
+.gemini-search-box {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 15px 12px 15px;
+}
+
+#gemini-search-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #202124;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.2s, background-color 0.2s;
+  background: #f8f9fa;
+}
+
+#gemini-search-input:focus {
+  border-color: #1a73e8;
+  background: #ffffff;
+}
+
+#gemini-search-input.not-found {
+  border-color: #d93025;
+  background: #fce8e6;
+  animation: gemini-shake 0.4s;
+}
+
+@keyframes gemini-shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-3px); }
+  50% { transform: translateX(3px); }
+  75% { transform: translateX(-3px); }
+  100% { transform: translateX(0); }
+}
+
+.gemini-search-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.gemini-search-actions button {
+  background: #f8f9fa;
+  border: 1px solid #dadce0;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #5f6368;
+  font-size: 8px;
+  padding: 2px 4px;
+  line-height: 1;
+}
+
+.gemini-search-actions button:hover {
+  background: #e8eaed;
+}
+
+/* Dark Mode for Search Box */
+body[data-theme="dark"] #gemini-search-input,
+body.dark-theme #gemini-search-input {
+  background: #202124;
+  border-color: #3c4043;
+  color: #e8eaed;
+}
+
+body[data-theme="dark"] #gemini-search-input:focus,
+body.dark-theme #gemini-search-input:focus {
+  border-color: #8ab4f8;
+  background: #303134;
+}
+
+body[data-theme="dark"] #gemini-search-input.not-found,
+body.dark-theme #gemini-search-input.not-found {
+  background: #3c1618;
+  border-color: #f28b82;
+}
+
+body[data-theme="dark"] .gemini-search-actions button,
+body.dark-theme .gemini-search-actions button {
+  background: #3c4043;
+  border-color: #5f6368;
+  color: #e8eaed;
+}
+
+body[data-theme="dark"] .gemini-search-actions button:hover,
+body.dark-theme .gemini-search-actions button:hover {
+  background: #5f6368;
+}
+
+/* Tabs Container */
+.gemini-tabs {
+  display: flex;
+  gap: 8px;
+  padding: 0 15px 16px 15px;
+}
+
+.gemini-tab {
+  flex: 1;
+  padding: 8px;
+  background: white;
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #5f6368;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.gemini-tab:hover {
+  background: #f8f9fa;
+  color: #202124;
+}
+
+.gemini-tab.active {
+  background: rgba(26, 115, 232, 0.1);
+  color: #1a73e8;
+  border-color: #1a73e8;
+}
+
+/* Dark Mode for Tabs */
+body[data-theme="dark"] .gemini-tab,
+body.dark-theme .gemini-tab {
+  background: #1e1f20;
+  border-color: #3c4043;
+  color: #9aa0a6;
+}
+
+body[data-theme="dark"] .gemini-tab:hover,
+body.dark-theme .gemini-tab:hover {
+  background: #2d2e30;
+  color: #e8eaed;
+}
+
+body[data-theme="dark"] .gemini-tab.active,
+body.dark-theme .gemini-tab.active {
+  background: rgba(138, 180, 248, 0.1);
+  color: #8ab4f8;
+  border-color: #8ab4f8;
 }
 
 /* Scrollbar */
